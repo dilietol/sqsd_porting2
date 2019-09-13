@@ -33,15 +33,15 @@ class S(BaseHTTPRequestHandler):
 
     def do_POST(self):
         # Doesn't do anything with posted data
+        print("User-Agent: " + self.headers.get('User-Agent'))
         self._set_headers()
         self.wfile.write("posted".encode("utf-8"))
 
 
-def run(server_class=HTTPServer, handler_class=S, port=80):
+def run(server_class=HTTPServer, handler_class=S, port=5001):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    print
-    'Starting httpd...'
+    print ('Starting httpd...')
     httpd.serve_forever()
 
 
