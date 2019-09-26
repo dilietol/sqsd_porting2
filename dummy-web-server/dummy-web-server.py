@@ -33,7 +33,11 @@ class S(BaseHTTPRequestHandler):
 
     def do_POST(self):
         # Doesn't do anything with posted data
+        content_length = int(self.headers['Content-Length'])  # <--- Gets the size of data
+        post_data = self.rfile.read(content_length)  # <--- Gets the data itself
+        print("Data: " + str(post_data))
         print("User-Agent: " + self.headers.get('User-Agent'))
+
         self._set_headers()
         self.wfile.write("posted".encode("utf-8"))
 
