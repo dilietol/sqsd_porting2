@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/">
+    <ReceiveMessageResult>
+        <Message>
+            <MessageId>19e75e80-25b6-438b-b57a-9bc41f013679</MessageId>
+            <ReceiptHandle>
+                AQEBBDl5If0nr9OxZNgRGfGPab98FqpfduLFUqtjO4bDey10kyA/BBlTgvlv3scEEP3MnyMQVHnt0uyHAKK1lms4R4Q1N80NLvNXvWH9cIvdN60Ltlz0tqNrYYKv4cb95SXUuOLMmze5Tr3vXNKTF8DscSKK/qUe6RLnexyv/4edM+1/iU3vtP01enqc17VhGzqjxguXAEvCkYDJ8TAR7Jqm2wcAQr45QAPkEN+drItH7cHpF9C97WPO4YPsNaTwmNFaILITzvBez/jaQzJSgVBgV7GKOIPKZIpziy9zxjDEYvjJXjKC8QGECPto6H6bAW+GtDnQFTqnrd/HnGszTscAz/BYa6SIBu6oiTywKNQThz62bOhfyiOVaQZMbj6utGxklLvjN8xK/enQDB5cT0qI6pW3ZX1922SP2dQfJTXE9MM=
+            </ReceiptHandle>
+            <MD5OfBody>098f6bcd4621d373cade4e832627b4f6</MD5OfBody>
+            <Body>test</Body>
+            <Attribute>
+                <Name>SentTimestamp</Name>
+                <Value>1569431887067</Value>
+            </Attribute>
+        </Message>
+    </ReceiveMessageResult>
+    <ResponseMetadata>
+        <RequestId>f9c8341a-a1ae-5421-a1a4-621f05e6e974</RequestId>
+    </ResponseMetadata>
+</ReceiveMessageResponse>

@@ -1,6 +1,7 @@
 import requests
 import logging
 import datetime
+import boto3
 
 default_url="http://localhost:5000/employees"
 default_url2="http://localhost:5001/employees"
@@ -10,7 +11,7 @@ default_headers={'User-Agent': 'aws-sqsd',
                  'Content-Type': 'application/json'}
 logging.basicConfig(format='%(asctime)s %(process)d:%(levelname)s - %(message)s', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-
+queue_url = 'https://sqs.eu-central-1.amazonaws.com/650675451866/ap04024_sqs_analytics'
 
 class Sender():
 
@@ -25,6 +26,38 @@ class Sender():
                         'X-Aws-Sqsd-First-Received-At': datetime.datetime.utcnow().isoformat(),
                         'X-Aws-Sqsd-Receive-Count': str(0)})
 
+    def processMessage(self):
+        # Create SQS client
+        sqs = boto3.client('sqs')
+
+        # Receive message from SQS queue
+        response = sqs.receive_message(
+            QueueUrl=queue_url,
+            AttributeNames=[
+                'SentTimestamp'
+            ],
+            MaxNumberOfMessages=1,
+            MessageAttributeNames=[
+                'All'
+            ],
+            VisibilityTimeout=0,
+            WaitTimeSeconds=0
+        )
+        print('Received')
+
+        message = response['Messages'][0]
+        receipt_handle = message['ReceiptHandle']
+
+        # Send message
+        status = self.send(message,1)
+        print('Forwarded. Return code: %s' % str(status))
+
+        # Delete received message from queue
+        sqs.delete_message(
+            QueueUrl=queue_url,
+            ReceiptHandle=receipt_handle
+        )
+        print('Received, forwarded and deleted message: %s' % message)
 
 class TestSender():
     def generateData(self, index=1):
@@ -33,7 +66,7 @@ class TestSender():
     def testSenderMultiple(self, index=2):
         sender = Sender()
         for i in range(index):
-            status = sender.send(self.generateData(i), i)
+            message = sender.processMessage()
             logging.debug("Response Status Code: "+ str(status))
 
 app = TestSender()

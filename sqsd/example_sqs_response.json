@@ -1,0 +1,16 @@
+{
+  'MD5OfMessageBody': 'd1d4180b7e411c4be86b00fb2ee103eb',
+  'MD5OfMessageAttributes': 'd25a6aea97eb8f585bfa92d314504a92',
+  'MessageId': 'e8a427fe-0b16-4e9a-88d8-22fed7c57406',
+  'ResponseMetadata': {
+    'RequestId': '3d4d9333-af77-5f1e-8ba8-c535580bf631',
+    'HTTPStatusCode': 200,
+    'HTTPHeaders': {
+      'x-amzn-requestid': '3d4d9333-af77-5f1e-8ba8-c535580bf631',
+      'date': 'Thu, 26 Sep 2019 17:28:28 GMT',
+      'content-type': 'text/xml',
+      'content-length': '459'
+    },
+    'RetryAttempts': 0
+  }
+}
