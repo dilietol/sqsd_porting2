@@ -11,7 +11,7 @@ default_headers={'User-Agent': 'aws-sqsd',
                  'Content-Type': 'application/json'}
 logging.basicConfig(format='%(asctime)s %(process)d:%(levelname)s - %(message)s', level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-queue_url = 'https://sqs.eu-central-1.amazonaws.com/650675451866/ap04024_sqs_analytics'
+queue_url = "DACAMBIARE"
 
 class Sender():
 
